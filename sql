@@ -6,6 +6,8 @@ USE DATABASE PORTFOLIO_DB;
 USE SCHEMA ANALYTICS;
 
 
+--Create stage table to upload SampleSuperstore.csv
+CREATE OR REPLACE STAGE my_internal_stage;
 
 
 
@@ -80,7 +82,7 @@ create or replace TABLE PORTFOLIO_DB.Analytics.raw_superstore (
 	city VARCHAR,
 	state VARCHAR,
 	postal_code VARCHAR,
-    region VARCHAR,
+    	region VARCHAR,
 	product_id VARCHAR,
 	category VARCHAR,
 	sub_category VARCHAR,
@@ -92,6 +94,12 @@ create or replace TABLE PORTFOLIO_DB.Analytics.raw_superstore (
 );
 
 
+-----------------------------------------------------------------------------------------------
+--Load SampleSuperstore.csv into raw table 
+COPY INTO raw_superstore
+FROM @my_internal_stage/SampleSuperstore.csv
+FILE_FORMAT = (TYPE = 'CSV' FIELD_OPTIONALLY_ENCLOSED_BY = '"' SKIP_HEADER = 1)
+ON_ERROR = CONTINUE;
 
 
 
