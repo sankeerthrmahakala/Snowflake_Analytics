@@ -28,6 +28,7 @@ This project uses the Sample Superstore dataset to imitate a real-world BI use c
 
 ## ERD
 
+- ERD.PNG
 
 
 ## Why This Project?
