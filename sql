@@ -143,7 +143,7 @@ SELECT
 TO_CHAR(order_date, 'YYYY-MM') AS month,
 ROUND(SUM(sales), 2) AS total_sales,
 ROUND(SUM(profit), 2) AS total_profit,
-ROUND(SUM(sales)/SUM(profit),2) As Sales_to_Profit_ratio
+ROUND(SUM(profit)/SUM(sales),2) As Profit_to_Sales_ratio
 FROM orders o
 JOIN order_details od ON o.order_id = od.order_id
 GROUP BY 1
